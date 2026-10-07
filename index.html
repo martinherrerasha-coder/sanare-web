@@ -170,146 +170,153 @@
             <!-- Formulario y Contenidos de los Pasos -->
             <div class="p-6 sm:p-8">
 
-                <!-- PASO 1: Formulario de Datos Personales -->
-                <div id="step-1" class="space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-bold text-sanare-800 font-heading">Formulario de Inscripción</h2>
-                        <p class="text-gray-600 text-sm mt-1">Ingresa tus datos personales para reservar tu cupo en el seminario.</p>
-                    </div>
+                <!-- Formulario FormSubmit Unificado que abarca el paso 1 y 2 -->
+                <form id="main-registration-form" action="https://formsubmit.co/martinherrera.sha@gmail.com" method="POST" enctype="multipart/form-data">
+                    
+                    <input type="hidden" name="_captcha" value="false">
 
-                    <form id="form-step-1" onsubmit="goToStep2(event)" class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- PASO 1: Formulario de Datos Personales -->
+                    <div id="step-1" class="space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-sanare-800 font-heading">Formulario de Inscripción</h2>
+                            <p class="text-gray-600 text-sm mt-1">Ingresa tus datos personales para reservar tu cupo en el seminario.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="nombre">
+                                        Nombre(s) <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                                            <i class="fa-regular fa-user"></i>
+                                        </div>
+                                        <input type="text" id="nombre" name="Nombre" required placeholder="Ej: Maria"
+                                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="apellido">
+                                        Apellido(s) <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                                            <i class="fa-regular fa-user"></i>
+                                        </div>
+                                        <input type="text" id="apellido" name="Apellido" required placeholder="Ej: Gonzales"
+                                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="nombre">
-                                    Nombre(s) <span class="text-red-500">*</span>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="telefono">
+                                    Número de Teléfono / WhatsApp <span class="text-red-500">*</span>
                                 </label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fa-regular fa-user"></i>
+                                        <i class="fa-brands fa-whatsapp text-lg"></i>
                                     </div>
-                                    <input type="text" id="nombre" required placeholder="Ej: Maria"
+                                    <input type="tel" id="telefono" name="Telefono_WhatsApp" required placeholder="Ej: +591 71234567"
+                                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Te contactaremos por esta vía si se requiere verificar la información.</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="origen">
+                                    ¿De dónde nos visitas? (Ciudad / País) <span class="text-red-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                                        <i class="fa-solid fa-earth-americas"></i>
+                                    </div>
+                                    <input type="text" id="origen" name="Origen_Ciudad_Pais" required placeholder="Ej: Santa Cruz, Bolivia"
                                         class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
                                 </div>
                             </div>
 
+                            <div class="pt-4">
+                                <button type="button" onclick="goToStep2(event)"
+                                    class="w-full bg-sanare-600 hover:bg-sanare-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-sanare-600/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 group text-base">
+                                    <span>Continuar al Pago</span>
+                                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASO 2: Pago con Código QR -->
+                    <div id="step-2" class="hidden space-y-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-sanare-800 font-heading">Realiza tu Pago</h2>
+                            <p class="text-gray-600 text-sm mt-1">Escanea el código QR desde tu aplicación bancaria preferida para confirmar la reserva.</p>
+                        </div>
+
+                        <!-- Caja con QR de Pago (Usando qr-pago.png de GitHub) -->
+                        <div class="bg-gradient-to-br from-sanare-50 to-emerald-50/50 rounded-2xl p-6 border border-sanare-200/60 text-center flex flex-col items-center">
+                            <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-100 max-w-[240px] w-full relative group">
+                                <!-- Visualizador de QR apuntando al archivo cargado en GitHub -->
+                                <img id="qr-image-display" 
+                                    src="qr-pago.png" 
+                                    onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Pago+Seminario+Sanare+2026&color=004d40'"
+                                    alt="QR de Pago Sanaré" 
+                                    class="w-full h-auto rounded-lg mx-auto object-contain">
+                                
+                                <button type="button" onclick="openQrModal()" title="Cambiar la imagen del QR de Pago"
+                                    class="mt-2 text-xs bg-sanare-100 hover:bg-sanare-200 text-sanare-800 py-1.5 px-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-1.5 w-full">
+                                    <i class="fa-solid fa-camera"></i> Cambiar / Subir mi QR
+                                </button>
+                            </div>
+
+                            <div class="mt-4 space-y-1 text-sm">
+                                <p class="font-bold text-sanare-800 text-base">Sanatorio Sanaré - Eventos</p>
+                                <p class="text-gray-600">Por concepto de: <span class="font-semibold text-sanare-700">Inscripción "¡Despierta y Sana!"</span></p>
+                                <p class="text-xs text-gray-500 italic mt-2">
+                                    <i class="fa-solid fa-circle-info text-sanare-600 mr-1"></i> Recuerda poner tu Nombre y Apellido en la glosa/concepto de la transferencia.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Adjuntar Comprobante -->
+                        <div class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="apellido">
-                                    Apellido(s) <span class="text-red-500">*</span>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
+                                    Comprobante de Pago (Opcional)
                                 </label>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fa-regular fa-user"></i>
+                                <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-sanare-400 transition-colors bg-gray-50/50 cursor-pointer relative" id="upload-box">
+                                    <input type="file" id="comprobante" name="Comprobante_Pago" accept="image/*,.pdf" onchange="handleReceiptUpload(event)"
+                                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                                    <div id="upload-placeholder" class="space-y-1">
+                                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-sanare-600 mb-1"></i>
+                                        <p class="text-xs font-medium text-gray-700">Haz clic aquí para subir la captura de tu comprobante</p>
+                                        <p class="text-[11px] text-gray-400">Formatos permitidos: JPG, PNG, PDF</p>
                                     </div>
-                                    <input type="text" id="apellido" required placeholder="Ej: Gonzales"
-                                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
+                                    <div id="upload-success" class="hidden text-sanare-700 font-medium text-xs flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-circle-check text-green-500 text-base"></i>
+                                        <span id="file-name">Comprobante adjuntado correctamente</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="telefono">
-                                Número de Teléfono / WhatsApp <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                                </div>
-                                <input type="tel" id="telefono" required placeholder="Ej: +591 71234567"
-                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
+                            <!-- Botones de Acción -->
+                            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                <button type="button" onclick="goToStep1()"
+                                    class="w-full sm:w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all text-sm order-2 sm:order-1">
+                                    <i class="fa-solid fa-arrow-left mr-1"></i> Volver
+                                </button>
+                                <button type="button" onclick="goToStep3(event)"
+                                    class="w-full sm:w-2/3 bg-sanare-600 hover:bg-sanare-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-sanare-600/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 text-base order-1 sm:order-2">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span>Confirmar e Inscribirme</span>
+                                </button>
                             </div>
-                            <p class="text-xs text-gray-500 mt-1">Te contactaremos por esta vía si se requiere verificar la información.</p>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="origen">
-                                ¿De dónde nos visitas? (Ciudad / País) <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-solid fa-earth-americas"></i>
-                                </div>
-                                <input type="text" id="origen" required placeholder="Ej: Santa Cruz, Bolivia"
-                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
-                            </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <button type="submit"
-                                class="w-full bg-sanare-600 hover:bg-sanare-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-sanare-600/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 group text-base">
-                                <span>Continuar al Pago</span>
-                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- PASO 2: Pago con Código QR -->
-                <div id="step-2" class="hidden space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-bold text-sanare-800 font-heading">Realiza tu Pago</h2>
-                        <p class="text-gray-600 text-sm mt-1">Escanea el código QR desde tu aplicación bancaria preferida para confirmar la reserva.</p>
-                    </div>
-
-                    <!-- Caja con QR de Pago -->
-                    <div class="bg-gradient-to-br from-sanare-50 to-emerald-50/50 rounded-2xl p-6 border border-sanare-200/60 text-center flex flex-col items-center">
-                        <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-100 max-w-[240px] w-full relative group">
-                            <!-- Visualizador de QR -->
-                            <img id="qr-image-display" 
-                                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Pago+Seminario+Sanare+2026&color=004d40" 
-                                alt="QR de Pago Sanaré" 
-                                class="w-full h-auto rounded-lg mx-auto object-contain">
-                            
-                            <!-- Botón para modificar el QR fácilmente desde la interfaz (Modo administrador/edición fácil) -->
-                            <button type="button" onclick="openQrModal()" title="Cambiar la imagen del QR de Pago"
-                                class="mt-2 text-xs bg-sanare-100 hover:bg-sanare-200 text-sanare-800 py-1.5 px-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-1.5 w-full">
-                                <i class="fa-solid fa-camera"></i> Cambiar / Subir mi QR
-                            </button>
-                        </div>
-
-                        <div class="mt-4 space-y-1 text-sm">
-                            <p class="font-bold text-sanare-800 text-base">Sanatorio Sanaré - Eventos</p>
-                            <p class="text-gray-600">Por concepto de: <span class="font-semibold text-sanare-700">Inscripción "¡Despierta y Sana!"</span></p>
-                            <p class="text-xs text-gray-500 italic mt-2">
-                                <i class="fa-solid fa-circle-info text-sanare-600 mr-1"></i> Recuerda poner tu Nombre y Apellido en la glosa/concepto de la transferencia.
-                            </p>
                         </div>
                     </div>
 
-                    <!-- Adjuntar o Confirmar Comprobante -->
-                    <form id="form-step-2" onsubmit="goToStep3(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                                Comprobante de Pago (Opcional)
-                            </label>
-                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-sanare-400 transition-colors bg-gray-50/50 cursor-pointer relative" id="upload-box">
-                                <input type="file" id="comprobante" accept="image/*,.pdf" onchange="handleReceiptUpload(event)"
-                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                                <div id="upload-placeholder" class="space-y-1">
-                                    <i class="fa-solid fa-cloud-arrow-up text-2xl text-sanare-600 mb-1"></i>
-                                    <p class="text-xs font-medium text-gray-700">Haz clic aquí para subir la captura de tu comprobante</p>
-                                    <p class="text-[11px] text-gray-400">Formatos permitidos: JPG, PNG, PDF</p>
-                                </div>
-                                <div id="upload-success" class="hidden text-sanare-700 font-medium text-xs flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-circle-check text-green-500 text-base"></i>
-                                    <span id="file-name">Comprobante adjuntado correctamente</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Botones de Acción -->
-                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                            <button type="button" onclick="goToStep1()"
-                                class="w-full sm:w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all text-sm order-2 sm:order-1">
-                                <i class="fa-solid fa-arrow-left mr-1"></i> Volver
-                            </button>
-                            <button type="submit"
-                                class="w-full sm:w-2/3 bg-sanare-600 hover:bg-sanare-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-sanare-600/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 text-base order-1 sm:order-2">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Confirmar e Inscribirme</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                </form>
 
                 <!-- PASO 3: Pantalla de Agradecimiento & WhatsApp -->
                 <div id="step-3" class="hidden text-center space-y-6 py-2">
@@ -360,16 +367,18 @@
                             </p>
                         </div>
 
-                        <a id="whatsapp-link-btn" href="https://chat.whatsapp.com/TU_CODIGO_DE_GRUPO_AQUI" target="_blank" rel="noopener noreferrer"
+                        <!-- Botón de acceso directo al grupo de WhatsApp proporcionado -->
+                        <a id="whatsapp-link-btn" href="https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y" target="_blank" rel="noopener noreferrer"
                             class="inline-flex items-center justify-center gap-2.5 w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-green-500/30 hover:shadow-xl transition-all text-base transform hover:-translate-y-0.5">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
                             <span>Unirme al Grupo de WhatsApp</span>
                         </a>
 
+                        <!-- Enlace directo al Soporte de WhatsApp proporcionado -->
                         <div class="pt-2 text-[11px] text-gray-500 flex items-center justify-center gap-2">
                             <span>¿Dudas o consultas?</span>
-                            <a href="https://wa.me/59163627087?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20seminario%20Despierta%20y%20Sana" target="_blank" class="text-sanare-700 font-bold underline hover:text-sanare-800">
-                                Contactar soporte (+591 63627087)
+                            <a href="https://wa.me/59169771103?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20seminario%20Despierta%20y%20Sana" target="_blank" class="text-sanare-700 font-bold underline hover:text-sanare-800">
+                                Contactar soporte (+591 69771103)
                             </a>
                         </div>
                     </div>
@@ -433,14 +442,13 @@
             <p class="font-bold text-white text-sm">Seminario de Salud Sanaré 2026</p>
             <p class="text-sanare-300">Sanatorio Sanaré | Jorochito - Santa Cruz, Bolivia</p>
             <p class="text-gray-400 text-[11px] pt-2">
-                Consultas y Reservas Telefónicas: <a href="tel:+59163627087" class="text-sanare-200 font-bold hover:underline">+591 63627087</a>
+                Consultas y Reservas Telefónicas: <a href="https://wa.me/59169771103" class="text-sanare-200 font-bold hover:underline">+591 69771103</a>
             </p>
         </div>
     </footer>
 
-    <!-- Lógica JavaScript para control del formulario de 3 pasos -->
+    <!-- Lógica JavaScript -->
     <script>
-        // Objeto global para almacenar los datos del usuario durante la sesión
         const userData = {
             nombre: '',
             apellido: '',
@@ -449,10 +457,9 @@
             comprobante: null
         };
 
-        // ENLACE DEL GRUPO DE WHATSAPP (Puedes cambiarlo cuando lo desees)
-        let whatsappGroupUrl = "https://chat.whatsapp.com/TU_CODIGO_DE_GRUPO_AQUI";
+        // Enlace oficial de tu grupo de WhatsApp
+        let whatsappGroupUrl = "https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y";
 
-        // Elementos de la interfaz
         const step1 = document.getElementById('step-1');
         const step2 = document.getElementById('step-2');
         const step3 = document.getElementById('step-3');
@@ -469,24 +476,21 @@
 
         // Navegación hacia el Paso 2
         function goToStep2(event) {
-            event.preventDefault();
+            if (event) event.preventDefault();
             
-            // Guardar valores ingresados
             userData.nombre = document.getElementById('nombre').value.trim();
             userData.apellido = document.getElementById('apellido').value.trim();
             userData.telefono = document.getElementById('telefono').value.trim();
             userData.origen = document.getElementById('origen').value.trim();
 
             if (!userData.nombre || !userData.apellido || !userData.telefono || !userData.origen) {
-                alert('Por favor completa todos los campos requeridos.');
+                alert('Por favor completa todos los campos requeridos antes de continuar.');
                 return;
             }
 
-            // Transición UI
             step1.classList.add('hidden');
             step2.classList.remove('hidden');
 
-            // Actualizar estilo del Stepper
             progressBar.style.width = '50%';
 
             stepBadge1.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-completed transition-all duration-300 shadow-sm';
@@ -512,23 +516,30 @@
             stepLabel2.className = 'text-xs font-medium mt-1 text-gray-400';
         }
 
-        // Navegación hacia el Paso 3 (Confirmación)
+        // Navegación hacia el Paso 3 y envío de datos
         function goToStep3(event) {
-            event.preventDefault();
+            if (event) event.preventDefault();
 
-            // Llenar resumen final
             document.getElementById('summary-name').innerText = `${userData.nombre} ${userData.apellido}`;
             document.getElementById('summary-phone').innerText = userData.telefono;
             document.getElementById('summary-origin').innerText = userData.origen;
 
-            // Configurar enlace de WhatsApp en el botón
             document.getElementById('whatsapp-link-btn').href = whatsappGroupUrl;
 
-            // Transición UI
+            // Enviar los datos del formulario en segundo plano a FormSubmit
+            const mainForm = document.getElementById('main-registration-form');
+            const formData = new FormData(mainForm);
+
+            fetch(mainForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).catch(error => console.log('Registro procesado'));
+
+            // Cambiar a la vista del paso 3
             step2.classList.add('hidden');
             step3.classList.remove('hidden');
 
-            // Actualizar Stepper
             progressBar.style.width = '100%';
 
             stepBadge2.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-completed transition-all duration-300 shadow-sm';
@@ -541,7 +552,6 @@
             window.scrollTo({ top: 150, behavior: 'smooth' });
         }
 
-        // Control de subida de archivo de comprobante
         function handleReceiptUpload(event) {
             const file = event.target.files[0];
             if (file) {
@@ -552,10 +562,8 @@
             }
         }
 
-        // Reiniciar formulario para una nueva inscripción
         function resetForm() {
-            document.getElementById('form-step-1').reset();
-            document.getElementById('form-step-2').reset();
+            document.getElementById('main-registration-form').reset();
             document.getElementById('upload-placeholder').classList.remove('hidden');
             document.getElementById('upload-success').classList.add('hidden');
 
@@ -576,7 +584,6 @@
             stepLabel3.className = 'text-xs font-medium mt-1 text-gray-400';
         }
 
-        // Funciones del Modal para Personalizar la imagen del Código QR
         function openQrModal() {
             document.getElementById('qr-modal').classList.remove('hidden');
         }
