@@ -24,10 +24,10 @@
                             200: '#99f6e4',
                             300: '#5eead4',
                             400: '#2dd4bf',
-                            500: '#00bfa5',
-                            600: '#009b82',
+                            500: '#00bfa5', // Color turquesa/esmeralda principal
+                            600: '#009b82', // Esmeralda profundo
                             700: '#007965',
-                            800: '#004d40',
+                            800: '#004d40', // Verde oscuro del flyer
                             900: '#00332c',
                         },
                         whatsapp: '#25D366'
@@ -47,6 +47,12 @@
             background-image: radial-gradient(#00bfa5 0.5px, transparent 0.5px), radial-gradient(#00bfa5 0.5px, #f2fbf8 0.5px);
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+        .leaf-pattern {
+            background-color: #007965;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
+            background-size: 16px 16px;
         }
         .step-active {
             border-color: #00bfa5;
@@ -64,6 +70,7 @@
 
     <!-- Header / Banner con la estética del afiche Sanaré -->
     <header class="w-full bg-gradient-to-r from-sanare-800 via-sanare-700 to-sanare-600 text-white shadow-lg relative overflow-hidden">
+        <!-- Elemento decorativo flotante (hojas) -->
         <div class="absolute -right-10 -bottom-10 opacity-10 text-white text-9xl pointer-events-none">
             <i class="fa-solid fa-leaf"></i>
         </div>
@@ -72,6 +79,7 @@
         </div>
 
         <div class="max-w-4xl mx-auto px-4 py-6 sm:py-8 relative z-10">
+            <!-- Logos superiores -->
             <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-sanare-500/30 text-xs sm:text-sm font-semibold tracking-wider uppercase text-sanare-100">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-heart-pulse text-sanare-300 text-base"></i>
@@ -85,6 +93,7 @@
                 </div>
             </div>
 
+            <!-- Título del Flyer -->
             <div class="text-center sm:text-left my-2">
                 <div class="inline-block bg-sanare-900/80 text-sanare-200 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-3 tracking-wide border border-sanare-400/40">
                     <i class="fa-regular fa-calendar-check mr-1.5"></i> DEL 26 AL 31 DE OCTUBRE DE 2026
@@ -97,6 +106,7 @@
                 </p>
             </div>
 
+            <!-- Info clave del seminario -->
             <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-sanare-900/40 backdrop-blur-md p-4 rounded-2xl border border-white/10">
                 <div class="flex items-start gap-3">
                     <div class="p-2.5 bg-sanare-600/60 rounded-xl text-sanare-200 shrink-0 mt-0.5">
@@ -120,13 +130,14 @@
         </div>
     </header>
 
-    <!-- Contenedor Principal -->
+    <!-- Contenedor Principal de la App de Registro -->
     <main class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
         <div class="bg-white rounded-3xl shadow-xl border border-sanare-100 overflow-hidden">
 
             <!-- Bar de Progreso Paso a Paso -->
             <div class="bg-sanare-50 border-b border-sanare-100 p-4 sm:p-6">
                 <div class="flex items-center justify-between max-w-md mx-auto relative">
+                    <!-- Línea conectora -->
                     <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
                     <div id="progress-bar" class="absolute top-1/2 left-0 w-0 h-1 bg-sanare-600 -translate-y-1/2 z-0 transition-all duration-300"></div>
 
@@ -159,7 +170,7 @@
             <!-- Formulario y Contenidos de los Pasos -->
             <div class="p-6 sm:p-8">
 
-                <!-- Formulario FormSubmit Unificado -->
+                <!-- Formulario FormSubmit Unificado que abarca el paso 1 y 2 -->
                 <form id="main-registration-form" action="https://formsubmit.co/martinherrera.sha@gmail.com" method="POST" enctype="multipart/form-data">
                     
                     <input type="hidden" name="_captcha" value="false">
@@ -244,11 +255,12 @@
                             <p class="text-gray-600 text-sm mt-1">Escanea el código QR desde tu aplicación bancaria preferida para confirmar la reserva.</p>
                         </div>
 
-                        <!-- Caja con QR de Pago -->
+                        <!-- Caja con QR de Pago (Usando qr-pago.png de GitHub) -->
                         <div class="bg-gradient-to-br from-sanare-50 to-emerald-50/50 rounded-2xl p-6 border border-sanare-200/60 text-center flex flex-col items-center">
                             <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-100 max-w-[240px] w-full relative group">
+                                <!-- Visualizador de QR apuntando al archivo cargado en GitHub -->
                                 <img id="qr-image-display" 
-                                    src="qr-pago.jpeg" 
+                                    src="qr-pago.png" 
                                     onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Pago+Seminario+Sanare+2026&color=004d40'"
                                     alt="QR de Pago Sanaré" 
                                     class="w-full h-auto rounded-lg mx-auto object-contain">
@@ -319,7 +331,7 @@
                         </p>
                     </div>
 
-                    <!-- Resumen de Registro -->
+                    <!-- Tarjeta de Resumen de los datos del inscrito -->
                     <div class="bg-gray-50 rounded-2xl p-4 text-left border border-gray-200/80 max-w-md mx-auto space-y-2 text-xs sm:text-sm">
                         <div class="border-b border-gray-200 pb-2 mb-2 font-bold text-sanare-800 uppercase tracking-wider flex justify-between items-center">
                             <span>Resumen de Registro</span>
@@ -343,7 +355,7 @@
                         </div>
                     </div>
 
-                    <!-- Llamado a la Acción Principal: WhatsApp -->
+                    <!-- Llamado a la Acción Principal: Grupo de WhatsApp -->
                     <div class="bg-emerald-50 border-2 border-emerald-200/80 rounded-2xl p-5 sm:p-6 max-w-md mx-auto space-y-4 shadow-sm">
                         <div class="space-y-1">
                             <h3 class="font-bold text-gray-800 text-base sm:text-lg flex items-center justify-center gap-2">
@@ -355,12 +367,14 @@
                             </p>
                         </div>
 
+                        <!-- Botón de acceso directo al grupo de WhatsApp proporcionado -->
                         <a id="whatsapp-link-btn" href="https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y" target="_blank" rel="noopener noreferrer"
                             class="inline-flex items-center justify-center gap-2.5 w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-green-500/30 hover:shadow-xl transition-all text-base transform hover:-translate-y-0.5">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
                             <span>Unirme al Grupo de WhatsApp</span>
                         </a>
 
+                        <!-- Enlace directo al Soporte de WhatsApp proporcionado -->
                         <div class="pt-2 text-[11px] text-gray-500 flex items-center justify-center gap-2">
                             <span>¿Dudas o consultas?</span>
                             <a href="https://wa.me/59169771103?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20seminario%20Despierta%20y%20Sana" target="_blank" class="text-sanare-700 font-bold underline hover:text-sanare-800">
@@ -443,6 +457,7 @@
             comprobante: null
         };
 
+        // Enlace oficial de tu grupo de WhatsApp
         let whatsappGroupUrl = "https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y";
 
         const step1 = document.getElementById('step-1');
@@ -459,6 +474,7 @@
 
         const progressBar = document.getElementById('progress-bar');
 
+        // Navegación hacia el Paso 2
         function goToStep2(event) {
             if (event) event.preventDefault();
             
@@ -486,6 +502,7 @@
             window.scrollTo({ top: 150, behavior: 'smooth' });
         }
 
+        // Regresar al Paso 1
         function goToStep1() {
             step2.classList.add('hidden');
             step1.classList.remove('hidden');
@@ -499,6 +516,7 @@
             stepLabel2.className = 'text-xs font-medium mt-1 text-gray-400';
         }
 
+        // Navegación hacia el Paso 3 y envío de datos
         function goToStep3(event) {
             if (event) event.preventDefault();
 
@@ -508,6 +526,7 @@
 
             document.getElementById('whatsapp-link-btn').href = whatsappGroupUrl;
 
+            // Enviar los datos del formulario en segundo plano a FormSubmit
             const mainForm = document.getElementById('main-registration-form');
             const formData = new FormData(mainForm);
 
@@ -517,6 +536,7 @@
                 headers: { 'Accept': 'application/json' }
             }).catch(error => console.log('Registro procesado'));
 
+            // Cambiar a la vista del paso 3
             step2.classList.add('hidden');
             step3.classList.remove('hidden');
 
@@ -537,4 +557,62 @@
             if (file) {
                 userData.comprobante = file;
                 document.getElementById('upload-placeholder').classList.add('hidden');
-                document.getElementById('
+                document.getElementById('upload-success').classList.remove('hidden');
+                document.getElementById('file-name').innerText = `Archivo listo: ${file.name}`;
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('main-registration-form').reset();
+            document.getElementById('upload-placeholder').classList.remove('hidden');
+            document.getElementById('upload-success').classList.add('hidden');
+
+            step3.classList.add('hidden');
+            step1.classList.remove('hidden');
+
+            progressBar.style.width = '0%';
+
+            stepBadge1.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-active transition-all duration-300 shadow-sm';
+            stepBadge1.innerText = '1';
+
+            stepBadge2.className = 'w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300';
+            stepBadge2.innerText = '2';
+            stepLabel2.className = 'text-xs font-medium mt-1 text-gray-400';
+
+            stepBadge3.className = 'w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300';
+            stepBadge3.innerText = '3';
+            stepLabel3.className = 'text-xs font-medium mt-1 text-gray-400';
+        }
+
+        function openQrModal() {
+            document.getElementById('qr-modal').classList.remove('hidden');
+        }
+
+        function closeQrModal() {
+            document.getElementById('qr-modal').classList.add('hidden');
+        }
+
+        function uploadCustomQr(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('qr-image-display').src = e.target.result;
+                    closeQrModal();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveCustomQrUrl() {
+            const url = document.getElementById('qr-url-input').value.trim();
+            if (url) {
+                document.getElementById('qr-image-display').src = url;
+                closeQrModal();
+            } else {
+                alert('Ingresa una URL válida o sube una imagen.');
+            }
+        }
+    </script>
+</body>
+</html>
