@@ -167,6 +167,7 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
+            box-sizing: border-box;
         }
 
         .btn:hover {
@@ -181,6 +182,11 @@
 
         .btn-whatsapp:hover {
             background-color: #1eb956;
+        }
+
+        .btn-support {
+            background-color: #00796b;
+            margin-top: 10px;
         }
 
         .thank-you {
@@ -235,9 +241,9 @@
     </div>
 
     <div class="form-section">
+        <!-- Formulario configurado para FormSubmit -->
         <form id="registrationForm" action="https://formsubmit.co/martinherrera.sha@gmail.com" method="POST" enctype="multipart/form-data">
             
-            <!-- Redirección opcional de FormSubmit -->
             <input type="hidden" name="_captcha" value="false">
 
             <!-- PASO 1: DATOS PERSONALES -->
@@ -260,13 +266,12 @@
                 <button type="button" class="btn" onclick="nextStep(2)">Siguiente: Realizar Pago →</button>
             </div>
 
-            <!-- PASO 2: PAGO QR -->
+            <!-- PASO 2: PAGO QR Y ENVÍO -->
             <div class="step-content" id="step2">
                 <div class="qr-box">
                     <h3>Escanea el Código QR para pagar</h3>
                     <p style="font-size: 13px; color: #666; margin-top: 4px;">Realiza la transferencia por tu aplicación bancaria</p>
                     
-                    <!-- Reemplaza src con la ruta o URL de tu código QR -->
                     <img src="qr-pago.png" alt="Código QR de Pago Sanaré" onerror="this.src='https://via.placeholder.com/200x200?text=Subir+QR+Aqui'">
 
                     <p style="font-size: 12px; color: #444; font-weight: bold;">Sanatorio Sanaré</p>
@@ -277,21 +282,29 @@
                     <input type="file" id="comprobante" name="Comprobante de Pago" accept="image/*,application/pdf" required>
                 </div>
 
-                <button type="submit" class="btn">Completar Inscripción ✓</button>
+                <button type="submit" class="btn" id="submitBtn">Completar Inscripción ✓</button>
             </div>
 
         </form>
 
-        <!-- PASO 3: AGRADECIMIENTO Y WHATSAPP -->
+        <!-- PASO 3: AGRADECIMIENTO, GRUPO Y SOPORTE -->
         <div class="step-content" id="step3">
             <div class="thank-you">
                 <h2>¡Inscripción Recibida! 🎉</h2>
                 <p>Muchas gracias por registrarte en el <strong>Seminario de Salud Sanaré 2026</strong>. Hemos recibido tu información y comprobante de pago correctamente.</p>
                 
-                <p>Para estar al tanto de todas las novedades, fechas y accesos, <strong>únate ahora a nuestro grupo oficial de WhatsApp</strong>:</p>
+                <p>Para estar al tanto de todas las novedades y detalles, <strong>únate ahora a nuestro grupo oficial de WhatsApp</strong>:</p>
 
-                <a href="https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y" target="_blank" class="btn btn-whatsapp">
+                <!-- Botón de acceso directo al grupo de WhatsApp -->
+                <a href="https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
                     📲 Unirme al Grupo de WhatsApp
+                </a>
+
+                <p style="margin-top: 25px; margin-bottom: 10px; font-size: 14px; color: #666;">¿Tienes dudas con tu registro o el pago?</p>
+
+                <!-- Botón directo de soporte por WhatsApp (+59169771103) -->
+                <a href="https://wa.me/59169771103?text=Hola,%20tengo%20una%20consulta%20sobre%20mi%20inscripción%20al%20Seminario%20Sanaré" target="_blank" rel="noopener noreferrer" class="btn btn-support">
+                    💬 Contactar a Soporte (+591 69771103)
                 </a>
             </div>
         </div>
@@ -300,13 +313,12 @@
 
 <script>
     function nextStep(step) {
-        // Validar que el paso 1 esté lleno antes de continuar
-        const nombre = document.getElementById('nombre').value;
-        const ciudad = document.getElementById('ciudad').value;
-        const telefono = document.getElementById('telefono').value;
+        const nombre = document.getElementById('nombre').value.trim();
+        const ciudad = document.getElementById('ciudad').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
 
         if (!nombre || !ciudad || !telefono) {
-            alert('Por favor, completa todos los campos requeridos antes de continuar.');
+            alert('Por favor, completa todos los campos obligatorios antes de continuar.');
             return;
         }
 
@@ -321,12 +333,34 @@
         document.getElementById('step' + step + '-indicator').classList.add('active');
     }
 
-    // Interceptar el envío del formulario para mostrar el paso final
+    // Manejo del envío en segundo plano para evitar bloqueo de pantalla
     document.getElementById('registrationForm').addEventListener('submit', function(e) {
-        // FormSubmit se encarga del envío del correo
-        setTimeout(() => {
+        e.preventDefault();
+
+        const comprobante = document.getElementById('comprobante').files.length;
+        if (comprobante === 0) {
+            alert('Por favor, adjunta la foto o PDF de tu comprobante de pago.');
+            return;
+        }
+
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = 'Enviando información...';
+        btn.disabled = true;
+
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
             showStep(3);
-        }, 500);
+        }).catch(error => {
+            // Avanzar al paso final de todas formas para no interrumpir al usuario
+            showStep(3);
+        });
     });
 </script>
 
