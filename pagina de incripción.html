@@ -3,609 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripción - Seminario de Salud Sanaré 2026</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter & Montserrat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sanare: {
-                            50: '#f0fdf9',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#00bfa5', // Color turquesa/esmeralda principal
-                            600: '#009b82', // Esmeralda profundo
-                            700: '#007965',
-                            800: '#004d40', // Verde oscuro del flyer
-                            900: '#00332c',
-                        },
-                        whatsapp: '#25D366'
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Inscripción - Seminario Sanaré 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
+        :root {
+            --primary-dark: #004d40;
+            --primary: #00796b;
+            --primary-light: #26a69a;
+            --accent: #00bfa5;
+            --bg-mint: #e0f2f1;
+            --text-main: #1c2d27;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f2fbf8;
-            background-image: radial-gradient(#00bfa5 0.5px, transparent 0.5px), radial-gradient(#00bfa5 0.5px, #f2fbf8 0.5px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            background-opacity: 0.05;
         }
-        .leaf-pattern {
-            background-color: #007965;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
-            background-size: 16px 16px;
+
+        body {
+            background-color: var(--bg-mint);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .step-active {
-            border-color: #00bfa5;
-            color: #007965;
-            background-color: #e6fffa;
+
+        .container {
+            background: var(--white);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 77, 64, 0.15);
+            overflow: hidden;
         }
-        .step-completed {
-            background-color: #009b82;
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .stepper {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: #f4fbfb;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #888;
+        }
+
+        .step.active {
+            color: var(--primary);
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            border-color: #009b82;
+            font-size: 13px;
+        }
+
+        .step.active .step-number {
+            background: var(--primary);
+        }
+
+        .form-section {
+            padding: 30px;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--primary-dark);
+        }
+
+        input[type="text"], input[type="tel"], input[type="file"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #b2dfdb;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+        }
+
+        .qr-box {
+            text-align: center;
+            background: #f0fdfa;
+            border: 2px dashed var(--primary-light);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .qr-box img {
+            max-width: 200px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            margin-top: 15px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb956;
+        }
+
+        .thank-you {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .thank-you h2 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .thank-you p {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .stepper {
+                padding: 15px 20px;
+            }
+            .step-text {
+                display: none;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between text-gray-800 antialiased">
+<body>
 
-    <!-- Header / Banner con la estética del afiche Sanaré -->
-    <header class="w-full bg-gradient-to-r from-sanare-800 via-sanare-700 to-sanare-600 text-white shadow-lg relative overflow-hidden">
-        <!-- Elemento decorativo flotante (hojas) -->
-        <div class="absolute -right-10 -bottom-10 opacity-10 text-white text-9xl pointer-events-none">
-            <i class="fa-solid fa-leaf"></i>
+<div class="container">
+    <div class="header">
+        <h1>¡Despierta y Sana!</h1>
+        <p>Seminario de Salud Sanaré 2026 | 26 - 31 Octubre</p>
+    </div>
+
+    <div class="stepper">
+        <div class="step active" id="step1-indicator">
+            <span class="step-number">1</span>
+            <span class="step-text">Datos</span>
         </div>
-        <div class="absolute -left-10 -top-10 opacity-10 text-white text-9xl pointer-events-none">
-            <i class="fa-solid fa-seedling"></i>
+        <div class="step" id="step2-indicator">
+            <span class="step-number">2</span>
+            <span class="step-text">Pago</span>
         </div>
-
-        <div class="max-w-4xl mx-auto px-4 py-6 sm:py-8 relative z-10">
-            <!-- Logos superiores -->
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-sanare-500/30 text-xs sm:text-sm font-semibold tracking-wider uppercase text-sanare-100">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-heart-pulse text-sanare-300 text-base"></i>
-                    <span>GC Médico</span> | <span>Unión Boliviana</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="bg-sanare-900/60 px-3 py-1 rounded-full text-sanare-200 border border-sanare-400/30">ASORBOL</span>
-                    <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
-                        Sanaré <i class="fa-solid fa-leaf text-sanare-300 text-xs"></i>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Título del Flyer -->
-            <div class="text-center sm:text-left my-2">
-                <div class="inline-block bg-sanare-900/80 text-sanare-200 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-3 tracking-wide border border-sanare-400/40">
-                    <i class="fa-regular fa-calendar-check mr-1.5"></i> DEL 26 AL 31 DE OCTUBRE DE 2026
-                </div>
-                <h1 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight mb-2">
-                    ¡Despierta y Sana!
-                </h1>
-                <p class="text-sanare-100 font-medium text-base sm:text-lg max-w-xl">
-                    Seminario Internacional de Salud Integral y Estilo de Vida Saludable
-                </p>
-            </div>
-
-            <!-- Info clave del seminario -->
-            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-sanare-900/40 backdrop-blur-md p-4 rounded-2xl border border-white/10">
-                <div class="flex items-start gap-3">
-                    <div class="p-2.5 bg-sanare-600/60 rounded-xl text-sanare-200 shrink-0 mt-0.5">
-                        <i class="fa-solid fa-user-doctor text-base"></i>
-                    </div>
-                    <div>
-                        <span class="text-xs text-sanare-200 block font-medium">Invitados Especiales:</span>
-                        <strong class="text-white text-sm block">Jose Nguepe & Abel Morales</strong>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <div class="p-2.5 bg-sanare-600/60 rounded-xl text-sanare-200 shrink-0 mt-0.5">
-                        <i class="fa-solid fa-location-dot text-base"></i>
-                    </div>
-                    <div>
-                        <span class="text-xs text-sanare-200 block font-medium">Lugar del Evento:</span>
-                        <strong class="text-white text-sm block">Sanatorio Sanaré (Jorochito - Santa Cruz)</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Contenedor Principal de la App de Registro -->
-    <main class="max-w-2xl mx-auto px-4 py-8 w-full flex-grow">
-        <div class="bg-white rounded-3xl shadow-xl border border-sanare-100 overflow-hidden">
-
-            <!-- Bar de Progreso Paso a Paso -->
-            <div class="bg-sanare-50 border-b border-sanare-100 p-4 sm:p-6">
-                <div class="flex items-center justify-between max-w-md mx-auto relative">
-                    <!-- Línea conectora -->
-                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
-                    <div id="progress-bar" class="absolute top-1/2 left-0 w-0 h-1 bg-sanare-600 -translate-y-1/2 z-0 transition-all duration-300"></div>
-
-                    <!-- Paso 1 Badge -->
-                    <div class="relative z-10 flex flex-col items-center">
-                        <div id="step-badge-1" class="w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm bg-white step-active transition-all duration-300 shadow-sm">
-                            1
-                        </div>
-                        <span id="step-label-1" class="text-xs font-semibold mt-1 text-sanare-800">Datos</span>
-                    </div>
-
-                    <!-- Paso 2 Badge -->
-                    <div class="relative z-10 flex flex-col items-center">
-                        <div id="step-badge-2" class="w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300">
-                            2
-                        </div>
-                        <span id="step-label-2" class="text-xs font-medium mt-1 text-gray-400">Pago QR</span>
-                    </div>
-
-                    <!-- Paso 3 Badge -->
-                    <div class="relative z-10 flex flex-col items-center">
-                        <div id="step-badge-3" class="w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300">
-                            3
-                        </div>
-                        <span id="step-label-3" class="text-xs font-medium mt-1 text-gray-400">Confirmación</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formulario y Contenidos de los Pasos -->
-            <div class="p-6 sm:p-8">
-
-                <!-- PASO 1: Formulario de Datos Personales -->
-                <div id="step-1" class="space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-bold text-sanare-800 font-heading">Formulario de Inscripción</h2>
-                        <p class="text-gray-600 text-sm mt-1">Ingresa tus datos personales para reservar tu cupo en el seminario.</p>
-                    </div>
-
-                    <form id="form-step-1" onsubmit="goToStep2(event)" class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="nombre">
-                                    Nombre(s) <span class="text-red-500">*</span>
-                                </label>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fa-regular fa-user"></i>
-                                    </div>
-                                    <input type="text" id="nombre" required placeholder="Ej: Maria"
-                                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="apellido">
-                                    Apellido(s) <span class="text-red-500">*</span>
-                                </label>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                        <i class="fa-regular fa-user"></i>
-                                    </div>
-                                    <input type="text" id="apellido" required placeholder="Ej: Gonzales"
-                                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="telefono">
-                                Número de Teléfono / WhatsApp <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                                </div>
-                                <input type="tel" id="telefono" required placeholder="Ej: +591 71234567"
-                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
-                            </div>
-                            <p class="text-xs text-gray-500 mt-1">Te contactaremos por esta vía si se requiere verificar la información.</p>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5" for="origen">
-                                ¿De dónde nos visitas? (Ciudad / País) <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-solid fa-earth-americas"></i>
-                                </div>
-                                <input type="text" id="origen" required placeholder="Ej: Santa Cruz, Bolivia"
-                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-sanare-500 focus:ring-2 focus:ring-sanare-200 outline-none transition-all text-gray-800 text-sm bg-gray-50/50 focus:bg-white">
-                            </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <button type="submit"
-                                class="w-full bg-sanare-600 hover:bg-sanare-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-sanare-600/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 group text-base">
-                                <span>Continuar al Pago</span>
-                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- PASO 2: Pago con Código QR -->
-                <div id="step-2" class="hidden space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-bold text-sanare-800 font-heading">Realiza tu Pago</h2>
-                        <p class="text-gray-600 text-sm mt-1">Escanea el código QR desde tu aplicación bancaria preferida para confirmar la reserva.</p>
-                    </div>
-
-                    <!-- Caja con QR de Pago -->
-                    <div class="bg-gradient-to-br from-sanare-50 to-emerald-50/50 rounded-2xl p-6 border border-sanare-200/60 text-center flex flex-col items-center">
-                        <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-100 max-w-[240px] w-full relative group">
-                            <!-- Visualizador de QR -->
-                            <img id="qr-image-display" 
-                                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Pago+Seminario+Sanare+2026&color=004d40" 
-                                alt="QR de Pago Sanaré" 
-                                class="w-full h-auto rounded-lg mx-auto object-contain">
-                            
-                            <!-- Botón para modificar el QR fácilmente desde la interfaz (Modo administrador/edición fácil) -->
-                            <button type="button" onclick="openQrModal()" title="Cambiar la imagen del QR de Pago"
-                                class="mt-2 text-xs bg-sanare-100 hover:bg-sanare-200 text-sanare-800 py-1.5 px-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-1.5 w-full">
-                                <i class="fa-solid fa-camera"></i> Cambiar / Subir mi QR
-                            </button>
-                        </div>
-
-                        <div class="mt-4 space-y-1 text-sm">
-                            <p class="font-bold text-sanare-800 text-base">Sanatorio Sanaré - Eventos</p>
-                            <p class="text-gray-600">Por concepto de: <span class="font-semibold text-sanare-700">Inscripción "¡Despierta y Sana!"</span></p>
-                            <p class="text-xs text-gray-500 italic mt-2">
-                                <i class="fa-solid fa-circle-info text-sanare-600 mr-1"></i> Recuerda poner tu Nombre y Apellido en la glosa/concepto de la transferencia.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Adjuntar o Confirmar Comprobante -->
-                    <form id="form-step-2" onsubmit="goToStep3(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                                Comprobante de Pago (Opcional)
-                            </label>
-                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-sanare-400 transition-colors bg-gray-50/50 cursor-pointer relative" id="upload-box">
-                                <input type="file" id="comprobante" accept="image/*,.pdf" onchange="handleReceiptUpload(event)"
-                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                                <div id="upload-placeholder" class="space-y-1">
-                                    <i class="fa-solid fa-cloud-arrow-up text-2xl text-sanare-600 mb-1"></i>
-                                    <p class="text-xs font-medium text-gray-700">Haz clic aquí para subir la captura de tu comprobante</p>
-                                    <p class="text-[11px] text-gray-400">Formatos permitidos: JPG, PNG, PDF</p>
-                                </div>
-                                <div id="upload-success" class="hidden text-sanare-700 font-medium text-xs flex items-center justify-center gap-2">
-                                    <i class="fa-solid fa-circle-check text-green-500 text-base"></i>
-                                    <span id="file-name">Comprobante adjuntado correctamente</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Botones de Acción -->
-                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                            <button type="button" onclick="goToStep1()"
-                                class="w-full sm:w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all text-sm order-2 sm:order-1">
-                                <i class="fa-solid fa-arrow-left mr-1"></i> Volver
-                            </button>
-                            <button type="submit"
-                                class="w-full sm:w-2/3 bg-sanare-600 hover:bg-sanare-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-sanare-600/30 hover:shadow-xl transition-all flex items-center justify-center gap-2 text-base order-1 sm:order-2">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Confirmar e Inscribirme</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- PASO 3: Pantalla de Agradecimiento & WhatsApp -->
-                <div id="step-3" class="hidden text-center space-y-6 py-2">
-                    <div class="w-20 h-20 bg-emerald-100 text-sanare-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner animate-bounce">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-
-                    <div>
-                        <h2 class="text-3xl font-extrabold text-sanare-800 font-heading">¡Inscripción Exitosa!</h2>
-                        <p class="text-gray-600 text-sm mt-2 max-w-md mx-auto">
-                            ¡Bienvenido(a) a <strong class="text-sanare-700">"¡Despierta y Sana!"</strong>! Tu registro ha sido procesado correctamente.
-                        </p>
-                    </div>
-
-                    <!-- Tarjeta de Resumen de los datos del inscrito -->
-                    <div class="bg-gray-50 rounded-2xl p-4 text-left border border-gray-200/80 max-w-md mx-auto space-y-2 text-xs sm:text-sm">
-                        <div class="border-b border-gray-200 pb-2 mb-2 font-bold text-sanare-800 uppercase tracking-wider flex justify-between items-center">
-                            <span>Resumen de Registro</span>
-                            <i class="fa-solid fa-ticket text-sanare-500"></i>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Participante:</span>
-                            <span id="summary-name" class="font-semibold text-gray-800">-</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Teléfono:</span>
-                            <span id="summary-phone" class="font-semibold text-gray-800">-</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Origen:</span>
-                            <span id="summary-origin" class="font-semibold text-gray-800">-</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Fecha del evento:</span>
-                            <span class="font-semibold text-sanare-700">26 al 31 de Octubre, 2026</span>
-                        </div>
-                    </div>
-
-                    <!-- Llamado a la Acción Principal: Grupo de WhatsApp -->
-                    <div class="bg-emerald-50 border-2 border-emerald-200/80 rounded-2xl p-5 sm:p-6 max-w-md mx-auto space-y-4 shadow-sm">
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-gray-800 text-base sm:text-lg flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp text-whatsapp text-2xl"></i>
-                                ¡Último paso importante!
-                            </h3>
-                            <p class="text-xs text-gray-600">
-                                Únete al grupo oficial de WhatsApp para recibir las actualizaciones, indicaciones de llegada y material del seminario.
-                            </p>
-                        </div>
-
-                        <a id="whatsapp-link-btn" href="https://chat.whatsapp.com/TU_CODIGO_DE_GRUPO_AQUI" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center gap-2.5 w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-green-500/30 hover:shadow-xl transition-all text-base transform hover:-translate-y-0.5">
-                            <i class="fa-brands fa-whatsapp text-2xl"></i>
-                            <span>Unirme al Grupo de WhatsApp</span>
-                        </a>
-
-                        <div class="pt-2 text-[11px] text-gray-500 flex items-center justify-center gap-2">
-                            <span>¿Dudas o consultas?</span>
-                            <a href="https://wa.me/59163627087?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20seminario%20Despierta%20y%20Sana" target="_blank" class="text-sanare-700 font-bold underline hover:text-sanare-800">
-                                Contactar soporte (+591 69771103)
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <button type="button" onclick="resetForm()" class="text-xs text-gray-500 hover:text-sanare-700 font-medium underline">
-                            Registrar a otra persona
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- Modal Interactivo para Cambiar Imagen de QR -->
-    <div id="qr-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl relative">
-            <button onclick="closeQrModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <h3 class="text-lg font-bold text-sanare-800 flex items-center gap-2">
-                <i class="fa-solid fa-qrcode text-sanare-600"></i> Configurar Código QR
-            </h3>
-            <p class="text-xs text-gray-600">Sube la foto del código QR de tu cuenta bancaria o pega la URL de la imagen del QR.</p>
-            
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Subir imagen desde tu dispositivo:</label>
-                    <input type="file" id="qr-file-input" accept="image/*" onchange="uploadCustomQr(event)"
-                        class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sanare-50 file:text-sanare-700 hover:file:bg-sanare-100 cursor-pointer">
-                </div>
-
-                <div class="relative flex py-1 items-center">
-                    <div class="flex-grow border-t border-gray-200"></div>
-                    <span class="flex-shrink mx-2 text-[10px] text-gray-400 uppercase tracking-widest">o mediante URL</span>
-                    <div class="flex-grow border-t border-gray-200"></div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Enlace de la Imagen (URL):</label>
-                    <input type="url" id="qr-url-input" placeholder="https://ejemplo.com/mi-qr.png"
-                        class="w-full px-3 py-2 text-xs border border-gray-300 rounded-xl focus:ring-1 focus:ring-sanare-500 outline-none">
-                </div>
-            </div>
-
-            <div class="flex justify-end gap-2 pt-2">
-                <button onclick="closeQrModal()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-xs font-medium text-gray-700">
-                    Cancelar
-                </button>
-                <button onclick="saveCustomQrUrl()" class="px-4 py-2 bg-sanare-600 hover:bg-sanare-700 text-white rounded-xl text-xs font-bold shadow-md">
-                    Guardar Cambio
-                </button>
-            </div>
+        <div class="step" id="step3-indicator">
+            <span class="step-number">3</span>
+            <span class="step-text">Listo</span>
         </div>
     </div>
 
-    <!-- Pie de página -->
-    <footer class="w-full bg-sanare-900 text-sanare-200 py-6 px-4 text-center text-xs mt-12 border-t border-sanare-800">
-        <div class="max-w-4xl mx-auto space-y-2">
-            <p class="font-bold text-white text-sm">Seminario de Salud Sanaré 2026</p>
-            <p class="text-sanare-300">Sanatorio Sanaré | Jorochito - Santa Cruz, Bolivia</p>
-            <p class="text-gray-400 text-[11px] pt-2">
-                Consultas y Reservas Telefónicas: <a href="tel:+59163627087" class="text-sanare-200 font-bold hover:underline">+591 63627087</a>
-            </p>
-        </div>
-    </footer>
-
-    <!-- Lógica JavaScript para control del formulario de 3 pasos -->
-    <script>
-        // Objeto global para almacenar los datos del usuario durante la sesión
-        const userData = {
-            nombre: '',
-            apellido: '',
-            telefono: '',
-            origen: '',
-            comprobante: null
-        };
-
-        // ENLACE DEL GRUPO DE WHATSAPP (Puedes cambiarlo cuando lo desees)
-        let whatsappGroupUrl = "https://chat.whatsapp.com/TU_CODIGO_DE_GRUPO_AQUI";
-
-        // Elementos de la interfaz
-        const step1 = document.getElementById('step-1');
-        const step2 = document.getElementById('step-2');
-        const step3 = document.getElementById('step-3');
-
-        const stepBadge1 = document.getElementById('step-badge-1');
-        const stepBadge2 = document.getElementById('step-badge-2');
-        const stepBadge3 = document.getElementById('step-badge-3');
-
-        const stepLabel1 = document.getElementById('step-label-1');
-        const stepLabel2 = document.getElementById('step-label-2');
-        const stepLabel3 = document.getElementById('step-label-3');
-
-        const progressBar = document.getElementById('progress-bar');
-
-        // Navegación hacia el Paso 2
-        function goToStep2(event) {
-            event.preventDefault();
+    <div class="form-section">
+        <form id="registrationForm" action="https://formsubmit.co/martinherrera.sha@gmail.com" method="POST" enctype="multipart/form-data">
             
-            // Guardar valores ingresados
-            userData.nombre = document.getElementById('nombre').value.trim();
-            userData.apellido = document.getElementById('apellido').value.trim();
-            userData.telefono = document.getElementById('telefono').value.trim();
-            userData.origen = document.getElementById('origen').value.trim();
+            <!-- Redirección opcional de FormSubmit -->
+            <input type="hidden" name="_captcha" value="false">
 
-            if (!userData.nombre || !userData.apellido || !userData.telefono || !userData.origen) {
-                alert('Por favor completa todos los campos requeridos.');
-                return;
-            }
+            <!-- PASO 1: DATOS PERSONALES -->
+            <div class="step-content active" id="step1">
+                <div class="form-group">
+                    <label for="nombre">Nombre y Apellido *</label>
+                    <input type="text" id="nombre" name="Nombre Completo" placeholder="Ej. Juan Pérez" required>
+                </div>
 
-            // Transición UI
-            step1.classList.add('hidden');
-            step2.classList.remove('hidden');
+                <div class="form-group">
+                    <label for="ciudad">¿De dónde eres? (Ciudad/País) *</label>
+                    <input type="text" id="ciudad" name="Origen/Ciudad" placeholder="Ej. Santa Cruz, Bolivia" required>
+                </div>
 
-            // Actualizar estilo del Stepper
-            progressBar.style.width = '50%';
+                <div class="form-group">
+                    <label for="telefono">Número de Teléfono / WhatsApp *</label>
+                    <input type="tel" id="telefono" name="Teléfono" placeholder="Ej. +591 63627087" required>
+                </div>
 
-            stepBadge1.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-completed transition-all duration-300 shadow-sm';
-            stepBadge1.innerHTML = '<i class="fa-solid fa-check"></i>';
+                <button type="button" class="btn" onclick="nextStep(2)">Siguiente: Realizar Pago →</button>
+            </div>
 
-            stepBadge2.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-active transition-all duration-300 shadow-sm';
-            stepLabel2.className = 'text-xs font-semibold mt-1 text-sanare-800';
+            <!-- PASO 2: PAGO QR -->
+            <div class="step-content" id="step2">
+                <div class="qr-box">
+                    <h3>Escanea el Código QR para pagar</h3>
+                    <p style="font-size: 13px; color: #666; margin-top: 4px;">Realiza la transferencia por tu aplicación bancaria</p>
+                    
+                    <!-- Reemplaza src con la ruta o URL de tu código QR -->
+                    <img src="qr-pago.png" alt="Código QR de Pago Sanaré" onerror="this.src='https://via.placeholder.com/200x200?text=Subir+QR+Aqui'">
 
-            window.scrollTo({ top: 150, behavior: 'smooth' });
+                    <p style="font-size: 12px; color: #444; font-weight: bold;">Sanatorio Sanaré</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="comprobante">Adjunta tu comprobante de pago *</label>
+                    <input type="file" id="comprobante" name="Comprobante de Pago" accept="image/*,application/pdf" required>
+                </div>
+
+                <button type="submit" class="btn">Completar Inscripción ✓</button>
+            </div>
+
+        </form>
+
+        <!-- PASO 3: AGRADECIMIENTO Y WHATSAPP -->
+        <div class="step-content" id="step3">
+            <div class="thank-you">
+                <h2>¡Inscripción Recibida! 🎉</h2>
+                <p>Muchas gracias por registrarte en el <strong>Seminario de Salud Sanaré 2026</strong>. Hemos recibido tu información y comprobante de pago correctamente.</p>
+                
+                <p>Para estar al tanto de todas las novedades, fechas y accesos, <strong>únate ahora a nuestro grupo oficial de WhatsApp</strong>:</p>
+
+                <a href="https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y" target="_blank" class="btn btn-whatsapp">
+                    📲 Unirme al Grupo de WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function nextStep(step) {
+        // Validar que el paso 1 esté lleno antes de continuar
+        const nombre = document.getElementById('nombre').value;
+        const ciudad = document.getElementById('ciudad').value;
+        const telefono = document.getElementById('telefono').value;
+
+        if (!nombre || !ciudad || !telefono) {
+            alert('Por favor, completa todos los campos requeridos antes de continuar.');
+            return;
         }
 
-        // Regresar al Paso 1
-        function goToStep1() {
-            step2.classList.add('hidden');
-            step1.classList.remove('hidden');
+        showStep(step);
+    }
 
-            progressBar.style.width = '0%';
+    function showStep(step) {
+        document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
 
-            stepBadge1.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-active transition-all duration-300 shadow-sm';
-            stepBadge1.innerText = '1';
+        document.getElementById('step' + step).classList.add('active');
+        document.getElementById('step' + step + '-indicator').classList.add('active');
+    }
 
-            stepBadge2.className = 'w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300';
-            stepLabel2.className = 'text-xs font-medium mt-1 text-gray-400';
-        }
+    // Interceptar el envío del formulario para mostrar el paso final
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        // FormSubmit se encarga del envío del correo
+        setTimeout(() => {
+            showStep(3);
+        }, 500);
+    });
+</script>
 
-        // Navegación hacia el Paso 3 (Confirmación)
-        function goToStep3(event) {
-            event.preventDefault();
-
-            // Llenar resumen final
-            document.getElementById('summary-name').innerText = `${userData.nombre} ${userData.apellido}`;
-            document.getElementById('summary-phone').innerText = userData.telefono;
-            document.getElementById('summary-origin').innerText = userData.origen;
-
-            // Configurar enlace de WhatsApp en el botón
-            document.getElementById('https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y').href = whatsappGroupUrl;
-
-            // Transición UI
-            step2.classList.add('hidden');
-            step3.classList.remove('hidden');
-
-            // Actualizar Stepper
-            progressBar.style.width = '100%';
-
-            stepBadge2.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-completed transition-all duration-300 shadow-sm';
-            stepBadge2.innerHTML = '<i class="fa-solid fa-check"></i>';
-
-            stepBadge3.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-completed transition-all duration-300 shadow-sm';
-            stepBadge3.innerHTML = '<i class="fa-solid fa-check"></i>';
-            stepLabel3.className = 'text-xs font-semibold mt-1 text-sanare-800';
-
-            window.scrollTo({ top: 150, behavior: 'smooth' });
-        }
-
-        // Control de subida de archivo de comprobante
-        function handleReceiptUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                userData.comprobante = file;
-                document.getElementById('upload-placeholder').classList.add('hidden');
-                document.getElementById('upload-success').classList.remove('hidden');
-                document.getElementById('file-name').innerText = `Archivo listo: ${file.name}`;
-            }
-        }
-
-        // Reiniciar formulario para una nueva inscripción
-        function resetForm() {
-            document.getElementById('form-step-1').reset();
-            document.getElementById('form-step-2').reset();
-            document.getElementById('upload-placeholder').classList.remove('hidden');
-            document.getElementById('upload-success').classList.add('hidden');
-
-            step3.classList.add('hidden');
-            step1.classList.remove('hidden');
-
-            progressBar.style.width = '0%';
-
-            stepBadge1.className = 'w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold text-sm step-active transition-all duration-300 shadow-sm';
-            stepBadge1.innerText = '1';
-
-            stepBadge2.className = 'w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300';
-            stepBadge2.innerText = '2';
-            stepLabel2.className = 'text-xs font-medium mt-1 text-gray-400';
-
-            stepBadge3.className = 'w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300';
-            stepBadge3.innerText = '3';
-            stepLabel3.className = 'text-xs font-medium mt-1 text-gray-400';
-        }
-
-        // Funciones del Modal para Personalizar la imagen del Código QR
-        function openQrModal() {
-            document.getElementById('qr-modal').classList.remove('hidden');
-        }
-
-        function closeQrModal() {
-            document.getElementById('qr-modal').classList.add('hidden');
-        }
-
-        function uploadCustomQr(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('qr-image-display').src = e.target.result;
-                    closeQrModal();
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function saveCustomQrUrl() {
-            const url = document.getElementById('qr-url-input').value.trim();
-            if (url) {
-                document.getElementById('qr-image-display').src = url;
-                closeQrModal();
-            } else {
-                alert('Ingresa una URL válida o sube una imagen.');
-            }
-        }
-    </script>
 </body>
 </html>
