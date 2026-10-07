@@ -255,12 +255,12 @@
                             <p class="text-gray-600 text-sm mt-1">Escanea el código QR desde tu aplicación bancaria preferida para confirmar la reserva.</p>
                         </div>
 
-                        <!-- Caja con QR de Pago (Usando qr-pago.png de GitHub) -->
+                        <!-- Caja con QR de Pago (Usando qr-pago.jpeg de GitHub) -->
                         <div class="bg-gradient-to-br from-sanare-50 to-emerald-50/50 rounded-2xl p-6 border border-sanare-200/60 text-center flex flex-col items-center">
                             <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-100 max-w-[240px] w-full relative group">
-                                <!-- Visualizador de QR apuntando al archivo cargado en GitHub -->
+                                <!-- Visualizador de QR apuntando al archivo qr-pago.jpeg de GitHub -->
                                 <img id="qr-image-display" 
-                                    src="qr-pago.png" 
+                                    src="qr-pago.jpeg" 
                                     onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Pago+Seminario+Sanare+2026&color=004d40'"
                                     alt="QR de Pago Sanaré" 
                                     class="w-full h-auto rounded-lg mx-auto object-contain">
@@ -580,39 +580,4 @@
             stepLabel2.className = 'text-xs font-medium mt-1 text-gray-400';
 
             stepBadge3.className = 'w-10 h-10 rounded-full border-2 border-gray-300 text-gray-400 bg-white flex items-center justify-center font-bold text-sm transition-all duration-300';
-            stepBadge3.innerText = '3';
-            stepLabel3.className = 'text-xs font-medium mt-1 text-gray-400';
-        }
-
-        function openQrModal() {
-            document.getElementById('qr-modal').classList.remove('hidden');
-        }
-
-        function closeQrModal() {
-            document.getElementById('qr-modal').classList.add('hidden');
-        }
-
-        function uploadCustomQr(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('qr-image-display').src = e.target.result;
-                    closeQrModal();
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function saveCustomQrUrl() {
-            const url = document.getElementById('qr-url-input').value.trim();
-            if (url) {
-                document.getElementById('qr-image-display').src = url;
-                closeQrModal();
-            } else {
-                alert('Ingresa una URL válida o sube una imagen.');
-            }
-        }
-    </script>
-</body>
-</html>
+            stepBadge3.innerText = '3
