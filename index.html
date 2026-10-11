@@ -144,7 +144,6 @@
                 <div>
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-16 h-16 rounded-2xl bg-sanare-100 border-2 border-sanare-500 flex items-center justify-center text-sanare-700 text-2xl font-bold shadow-inner shrink-0 overflow-hidden">
-                            <!-- Si tienes la foto en GitHub como dr-nguepe.jpg cámbialo en src -->
                             <img src="dr-nguepe.jpg" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/3774/3774299.png'" alt="Dr. Jose Nguepe" class="w-full h-full object-cover">
                         </div>
                         <div>
@@ -178,7 +177,6 @@
                 <div>
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-16 h-16 rounded-2xl bg-sanare-100 border-2 border-sanare-700 flex items-center justify-center text-sanare-800 text-2xl font-bold shadow-inner shrink-0 overflow-hidden">
-                            <!-- Si tienes la foto en GitHub como pr-abel.jpg cámbialo en src -->
                             <img src="pr-abel.jpg" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/3774/3774299.png'" alt="Pr. Abel Morales" class="w-full h-full object-cover">
                         </div>
                         <div>
@@ -530,9 +528,8 @@
 
         let whatsappGroupUrl = "https://chat.whatsapp.com/DvZ027eNZ6vBWT0ry9ro8Y";
 
-        // CONFIGURACIÓN OPCIONAL PARA GOOGLE SHEETS / EXCEL ONLINE:
-        // Si tienes una URL de Google Apps Script o SheetDB, colócala aquí.
-        const GOOGLE_SHEETS_SCRIPT_URL = ""; 
+        // URL DE TU GOOGLE APPS SCRIPT CONFIGURADA CORRECTAMENTE:
+        const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzT6sjFWv01Gdwafvrp8c7WW9QMHbzhsmO-nxIk1qK32mz7Eo20taBjGads9_rABe5X/exec"; 
 
         const step1 = document.getElementById('step-1');
         const step2 = document.getElementById('step-2');
@@ -607,7 +604,7 @@
                 headers: { 'Accept': 'application/json' }
             }).catch(error => console.log('Procesado por FormSubmit'));
 
-            // 2. Envío directo a Google Sheets (Excel) si la URL está definida
+            // 2. Envío directo a Google Sheets (Excel)
             if (GOOGLE_SHEETS_SCRIPT_URL) {
                 fetch(GOOGLE_SHEETS_SCRIPT_URL, {
                     method: 'POST',
